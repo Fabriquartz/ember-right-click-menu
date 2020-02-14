@@ -1,0 +1,25 @@
+import { guidFor }                   from '@ember/object/internals';
+import { get, action }               from '@ember/object';
+import { inject as service }         from '@ember/service';
+import Component                     from '@glimmer/component';
+
+export default class ListItem extends Component {
+  @service rightClickMenu
+
+  popperId = guidFor(this);
+
+  @action
+  mouseEnter(e) {
+    e.stopPropagation();
+    this.rightClickMenu.createPopper(`popper-for-${get(this, 'popperId')}`);
+  }
+
+  @action
+  triggerAction() {
+    if (this.args.item.action) {
+      this.args.item.action();
+    }
+
+    this.args.closeContextMenu();
+  }
+}

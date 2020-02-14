@@ -1,15 +1,12 @@
-ember-right-click-menu
+Ember Right Click Menu
 ==============================================================================
 
-[Short description of the addon.]
-
+An easy and flexible addon to add context menus anywhere in your application
 
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v3.8 or above
-* Ember CLI v2.13 or above
-* Node.js v8 or above
+This addon is made for Ember Octane, with glimmer components
 
 
 Installation
@@ -19,12 +16,53 @@ Installation
 ember install ember-right-click-menu
 ```
 
+Setup
+------------------------------------------------------------------------------
+The right click menu needs some styling, which must be included manually. Add one of the following imports to your application. If you don't want any custom styling and style the right click menu on your own, you can just import the default.
+
+```css
+  @import 'ember-right-click-menu';
+  @import 'ember-right-click-menu-default'; /* without any additional styling */
+```
+
+If you don't want to include material icons, you can add the following lines to your styling instead
+
+```css
+.ember-right-click-menu {
+  display: none;
+}
+
+.ember-right-click-menu[data-show] {
+  display: block;
+}
+```
+
+Preview
+------------------------------------------------------------------------------
+![Ember Right Click Menu](screenshot-1.png)
 
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+The right click menu will be applied to its parent element. Options for the right click menu are added via a simple list of objects that contain a name and an action. You can nest options to create a multi level context menu. 
+```js
+items = [
+  { title: "Link", action: this.saveHyrule },
+  { title: "Zelda", action: this.petEpona },
+  { title: "Navi", items: [
+    { title: "Annoy the gamer", action: this.sayHeyListen },
+    { title: "Help Link out", action: this.sayHeyListen },
+    { title: "Yell for attention", action: this.sayHeyListen },
+  ]}
+]
 
+```
+```hbs
+<span>
+  Element with context menu
+  <RightClickMenu @items={{this.items}} />
+</span>
+```
 
 Contributing
 ------------------------------------------------------------------------------

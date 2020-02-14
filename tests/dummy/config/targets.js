@@ -1,3 +1,4 @@
+/* globals module process */
 'use strict';
 
 const browsers = [
@@ -6,7 +7,7 @@ const browsers = [
   'last 1 Safari versions'
 ];
 
-const isCI = !!process.env.CI;
+const isCI         = !!process.env.CI;
 const isProduction = process.env.EMBER_ENV === 'production';
 
 if (isCI || isProduction) {
