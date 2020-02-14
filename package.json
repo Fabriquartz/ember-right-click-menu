@@ -1,7 +1,7 @@
 {
   "name": "ember-right-click-menu",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "An easy and flexible addon to add context menus anywhere in your application",
   "keywords": [
     "ember-addon"
   ],
@@ -60,7 +60,7 @@
     "sass": "^1.25.0"
   },
   "engines": {
-    "node": "8.* || >= 10.*"
+    "node": "8.* || >= 10.* || >= 12.*"
   },
   "ember": {
     "edition": "octane"
