@@ -2,6 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-right-click-menu',
-
+  name: 'ember-right-click-menu'
 };

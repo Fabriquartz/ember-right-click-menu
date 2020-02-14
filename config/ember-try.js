@@ -7,7 +7,7 @@ module.exports = async function() {
     scenarios: [
       {
         name: 'ember-lts-3.8',
-        npm: {
+        npm:  {
           devDependencies: {
             'ember-source': '~3.8.0'
           }
@@ -15,7 +15,7 @@ module.exports = async function() {
       },
       {
         name: 'ember-lts-3.12',
-        npm: {
+        npm:  {
           devDependencies: {
             'ember-source': '~3.12.0'
           }
@@ -23,7 +23,7 @@ module.exports = async function() {
       },
       {
         name: 'ember-release',
-        npm: {
+        npm:  {
           devDependencies: {
             'ember-source': await getChannelURL('release')
           }
@@ -31,7 +31,7 @@ module.exports = async function() {
       },
       {
         name: 'ember-beta',
-        npm: {
+        npm:  {
           devDependencies: {
             'ember-source': await getChannelURL('beta')
           }
@@ -39,7 +39,7 @@ module.exports = async function() {
       },
       {
         name: 'ember-canary',
-        npm: {
+        npm:  {
           devDependencies: {
             'ember-source': await getChannelURL('canary')
           }
@@ -51,13 +51,13 @@ module.exports = async function() {
       // along with all the other scenarios.
       {
         name: 'ember-default',
-        npm: {
+        npm:  {
           devDependencies: {}
         }
       },
       {
         name: 'ember-default-with-jquery',
-        env: {
+        env:  {
           EMBER_OPTIONAL_FEATURES: JSON.stringify({
             'jquery-integration': true
           })
@@ -70,10 +70,10 @@ module.exports = async function() {
       },
       {
         name: 'ember-classic',
-        env: {
+        env:  {
           EMBER_OPTIONAL_FEATURES: JSON.stringify({
-            'application-template-wrapper': true,
-            'default-async-observers': false,
+            'application-template-wrapper':     true,
+            'default-async-observers':          false,
             'template-only-glimmer-components': false
           })
         },

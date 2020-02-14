@@ -1,12 +1,13 @@
+/* global module */
 'use strict';
 
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'dummy',
     environment,
-    rootURL: '/',
+    rootURL:      '/',
     locationType: 'auto',
-    EmberENV: {
+    EmberENV:     {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
@@ -37,10 +38,10 @@ module.exports = function(environment) {
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
-    ENV.APP.LOG_VIEW_LOOKUPS = false;
+    ENV.APP.LOG_VIEW_LOOKUPS      = false;
 
     ENV.APP.rootElement = '#ember-testing';
-    ENV.APP.autoboot = false;
+    ENV.APP.autoboot    = false;
   }
 
   if (environment === 'production') {
