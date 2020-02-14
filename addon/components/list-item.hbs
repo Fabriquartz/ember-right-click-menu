@@ -1,0 +1,17 @@
+<li
+  ...attributes
+  id={{this.popperId}}
+  class="ember-right-click-menu__item"
+  {{on "mouseover" this.mouseEnter}}
+  {{on "click" this.triggerAction}}
+>
+  {{@item.title}}
+  {{#if @item.items}}
+    <ItemList
+      id={{concat "popper-for-" this.popperId}}
+      @items={{@item.items}}
+      @closeContextMenu={{@closeContextMenu}}
+    />
+<i class="material-icons">chevron_right</i>
+  {{/if}}
+</li>

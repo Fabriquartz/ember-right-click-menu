@@ -1,0 +1,9 @@
+{{#if @items}}
+  <ItemList
+    id={{concat 'popper-for-' this.popperId}}
+    class="ember-right-click-menu"
+    @items={{@items}}
+    @closeContextMenu={{this.closeContextMenu}}
+    {{did-insert this.addContextMenuListeners}}
+  />
+{{/if}}

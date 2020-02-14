@@ -1,5 +1,7 @@
+/* globals module */
 'use strict';
 
 module.exports = {
-  name: require('./package').name
+  name: 'ember-right-click-menu',
+
 };
