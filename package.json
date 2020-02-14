@@ -5,11 +5,13 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fabriquartz/ember-right-click-menu.git"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "Fabriquartz",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
   "scripts": {
@@ -70,5 +72,10 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  }
+  },
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/Fabriquartz/ember-right-click-menu/issues"
+  },
+  "homepage": "https://github.com/Fabriquartz/ember-right-click-menu#readme"
 }
