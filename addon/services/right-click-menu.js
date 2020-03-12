@@ -5,7 +5,7 @@ import Popper  from '@popperjs/core';
 export default class RightClickMenuService extends Service {
   activeLists = A();
 
-  createPopper(popperElementId) {
+  createPopper(popperElementId, virtualElement) {
     let popperElement = document.querySelector(`#${popperElementId}`);
     let targetElement = popperElement
       ? popperElement.parentElement
@@ -27,9 +27,21 @@ export default class RightClickMenuService extends Service {
         );
       })
     ) {
-      let popperInstance = Popper.createPopper(targetElement, popperElement, {
-        placement: 'right'
-      });
+      let popperInstance = Popper.createPopper(
+        virtualElement || targetElement,
+        popperElement,
+        {
+          placement: virtualElement ? 'right-start' : 'right',
+          modifiers: [
+            {
+              name:    'offset',
+              options: {
+                offset: virtualElement ? [0, 10] : [0, 0]
+              }
+            }
+          ]
+        }
+      );
 
       popperElement.setAttribute('data-show', '');
 

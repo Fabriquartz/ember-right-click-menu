@@ -8,6 +8,17 @@ export default class RightClickMenuComponent extends Component {
 
   popperId = guidFor(this);
 
+  generateGetBoundingClientRect(x = 0, y = 0) {
+    return () => ({
+      width:  0,
+      height: 0,
+      top:    y,
+      right:  x,
+      bottom: y,
+      left:   x
+    });
+  }
+
   @action
   addContextMenuListeners() {
     window.addEventListener('click', this.closeContextMenu);
@@ -24,7 +35,10 @@ export default class RightClickMenuComponent extends Component {
     window.removeEventListener('contextmenu', this.closeContextMenu);
 
     if (element) {
-      element.parentElement.removeEventListener('contextmenu', this.contextMenu);
+      element.parentElement.removeEventListener(
+        'contextmenu',
+        this.contextMenu
+      );
     }
 
     super.willDestroy(...arguments);
@@ -35,7 +49,22 @@ export default class RightClickMenuComponent extends Component {
     e.preventDefault();
     let popperElementId = `popper-for-${this.popperId}`;
 
-    this.rightClickMenu.createPopper(popperElementId);
+    let { clientX: x, clientY: y } = e;
+
+    let virtualElement = {
+      getBoundingClientRect: () => {
+        return {
+          width:  0,
+          height: 0,
+          top:    y,
+          right:  x + 10,
+          bottom: y,
+          left:   x
+        };
+      }
+    };
+
+    this.rightClickMenu.createPopper(popperElementId, virtualElement);
   }
 
   @action
