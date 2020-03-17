@@ -3,7 +3,7 @@
 <li
   ...attributes
   id={{this.popperId}}
-  class="ember-right-click-menu__item"
+  class="ember-right-click-menu__item {{if @item.class @item.class}}"
   {{on "mouseover" this.mouseEnter}}
   {{on "click" this.triggerAction}}
 >
@@ -14,6 +14,6 @@
       @items={{@item.items}}
       @closeContextMenu={{@closeContextMenu}}
     />
-<i class="material-icons">chevron_right</i>
+    <i class="material-icons">chevron_right</i>
   {{/if}}
 </li>
