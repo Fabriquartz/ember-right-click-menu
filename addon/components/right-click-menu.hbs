@@ -1,9 +1,12 @@
 {{#if @items}}
-  <ItemList
-    id={{concat 'popper-for-' this.popperId}}
-    class="ember-right-click-menu"
-    @items={{@items}}
-    @closeContextMenu={{this.closeContextMenu}}
-    {{did-insert this.addContextMenuListeners}}
-  />
+  <span id={{concat "tether-for-" this.popperId}}></span>
+  <EmberWormhole @to="ember-right-click-menu-wormhole">
+    <ItemList
+      id={{concat 'popper-for-' this.popperId}}
+      class="ember-right-click-menu"
+      @items={{@items}}
+      @closeContextMenu={{this.closeContextMenu}}
+      {{did-insert this.addContextMenuListeners}}
+    />
+  </EmberWormhole>
 {{/if}}

@@ -19,23 +19,33 @@ export default class RightClickMenuComponent extends Component {
     });
   }
 
+  getTargetElement(popperId) {
+    let tetherElement = document.querySelector(`#tether-for-${popperId}`);
+    let targetElement = tetherElement && tetherElement.parentElement;
+
+    if (targetElement) {
+      tetherElement.remove();
+      this.targetElement = targetElement;
+      return targetElement;
+    }
+  }
+
   @action
   addContextMenuListeners() {
     window.addEventListener('click', this.closeContextMenu);
     window.addEventListener('contextmenu', this.closeContextMenu);
-    document
-      .querySelector(`#popper-for-${this.popperId}`)
-      .parentElement.addEventListener('contextmenu', this.contextMenu);
+    this.getTargetElement(this.popperId).addEventListener(
+      'contextmenu',
+      this.contextMenu
+    );
   }
 
   willDestroy() {
-    let element = document.querySelector(`#popper-for-${this.popperId}`);
-
     window.removeEventListener('click', this.closeContextMenu);
     window.removeEventListener('contextmenu', this.closeContextMenu);
 
-    if (element) {
-      element.parentElement.removeEventListener(
+    if (this.targetElement) {
+      this.targetElement.removeEventListener(
         'contextmenu',
         this.contextMenu
       );
@@ -64,16 +74,13 @@ export default class RightClickMenuComponent extends Component {
       }
     };
 
-    this.rightClickMenu.createPopper(popperElementId, virtualElement);
+    this.rightClickMenu.createPopper(popperElementId, this.targetElement, virtualElement);
   }
 
   @action
   closeContextMenu(e) {
-    let rootElement = document.querySelector(`#popper-for-${this.popperId}`)
-      .parentElement;
-
-    if (!e || !e.path.includes(rootElement)) {
-      this.rightClickMenu.closePopper(rootElement);
+    if (!e || e.type === 'click' || !e.path.includes(this.targetElement)) {
+      this.rightClickMenu.closePopper(this.targetElement);
     }
   }
 }

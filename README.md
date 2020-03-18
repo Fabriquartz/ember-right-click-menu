@@ -37,6 +37,12 @@ If you don't want to include material icons, you can add the following lines to 
 }
 ```
 
+In oder to make the context-menu work, you need to include the following line in your application. For example in the index.html or application.hbs.
+
+```hbs
+<div id="ember-right-click-menu-wormhole"></div>
+```
+
 Preview
 ------------------------------------------------------------------------------
 ![Ember Right Click Menu](screenshot-1.png)

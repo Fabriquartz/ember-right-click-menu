@@ -5,13 +5,12 @@ import Popper  from '@popperjs/core';
 export default class RightClickMenuService extends Service {
   activeLists = A();
 
-  createPopper(popperElementId, virtualElement) {
+  createPopper(popperElementId, targetElement, virtualElement) {
     let popperElement = document.querySelector(`#${popperElementId}`);
-    let targetElement = popperElement
-      ? popperElement.parentElement
-      : document.querySelector(
-          `#${popperElementId.replace('popper-for-', '')}`
-      );
+
+    targetElement =
+      targetElement ||
+      document.querySelector(`#${popperElementId.replace('popper-for-', '')}`);
 
     for (let siblingElement of targetElement.parentElement.children) {
       this.closePopper(siblingElement);
