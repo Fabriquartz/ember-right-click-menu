@@ -17,6 +17,7 @@
     font-size: 1rem;
     align-items: center;
     padding: 0.75em 1em;
+    cursor: pointer;
 
     &:hover {
       background: #f5f5f5
@@ -28,6 +29,15 @@
 
     &:last-child {
       border-radius: 0 0 0.5em 0.5em;
+    }
+
+    &--disabled {
+      color: #E0E0E0;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: initial;
+      }
     }
   }
 }

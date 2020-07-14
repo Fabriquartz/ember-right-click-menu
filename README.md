@@ -47,14 +47,16 @@ Preview
 ------------------------------------------------------------------------------
 ![Ember Right Click Menu](screenshot-1.png)
 
+Live demo: https://fabriquartz.github.io/ember-right-click-menu/
+
 Usage
 ------------------------------------------------------------------------------
 
-The right click menu will be applied to its parent element. Options for the right click menu are added via a simple list of objects that contain a name and an action. You can nest options to create a multi level context menu. 
+The right click menu will be applied to its parent element. Options for the right click menu are added via a simple list of objects that contain a name, an action and a property to make it disabled. You can nest options to create a multi level context menu.
 ```js
 items = [
   { title: "Link", action: this.saveHyrule },
-  { title: "Zelda", action: this.petEpona },
+  { title: "Zelda", action: this.petEpona, disabled: true },
   { title: "Navi", items: [
     { title: "Annoy the gamer", action: this.sayHeyListen },
     { title: "Help Link out", action: this.sayHeyListen },

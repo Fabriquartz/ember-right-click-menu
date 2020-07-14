@@ -1,9 +1,10 @@
-{{!-- template-lint-disable no-invalid-interactive --}}
-
+{{! template-lint-disable no-invalid-interactive }}
 <li
   ...attributes
   id={{this.popperId}}
-  class="ember-right-click-menu__item {{if @item.class @item.class}}"
+  class="ember-right-click-menu__item
+    {{if @item.class @item.class}}
+    {{if @item.disabled "ember-right-click-menu__item--disabled"}}"
   {{on "mouseover" this.mouseEnter}}
   {{on "click" this.triggerAction}}
 >
@@ -14,6 +15,8 @@
       @items={{@item.items}}
       @closeContextMenu={{@closeContextMenu}}
     />
-    <i class="material-icons">chevron_right</i>
+    <i class="material-icons">
+      chevron_right
+    </i>
   {{/if}}
 </li>
