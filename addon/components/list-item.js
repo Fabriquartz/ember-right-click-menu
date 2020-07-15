@@ -11,11 +11,20 @@ export default class ListItem extends Component {
   @action
   mouseEnter(e) {
     e.stopPropagation();
+
+    if (this.args.item.disabled) {
+      return;
+    }
+
     this.rightClickMenu.createPopper(`popper-for-${get(this, 'popperId')}`);
   }
 
   @action
   triggerAction() {
+    if (this.args.item.disabled) {
+      return;
+    }
+
     if (this.args.item.action) {
       this.args.item.action();
     }

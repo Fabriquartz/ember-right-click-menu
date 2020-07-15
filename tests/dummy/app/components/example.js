@@ -24,15 +24,30 @@ export default class Application extends Component {
       items: [
         { title: 'Master sword' },
         { title: 'Hyrule shield' },
-        { title: 'Hero of Time tunic' }
+        { title: 'Hero of Time tunic', disabled: true }
       ]
     },
     {
       title: 'Collectables',
       items: [
-        { title: 'Rupees' },
+        {
+          title: 'Rupees',
+          items: [
+            { title: 'green', disabled: true },
+            { title: 'blue', disabled: true },
+            { title: 'red', disabled: true }
+          ]
+        },
         { title: 'Heart containers' },
-        { title: 'Bottles' }
+        {
+          title:    'Bottles',
+          disabled: true,
+          items:    [
+            { title: 'Fairy' },
+            { title: 'Red potion' },
+            { title: 'Green potion' }
+          ]
+        }
       ]
     }
   ];
