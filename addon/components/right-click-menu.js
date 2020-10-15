@@ -1,7 +1,7 @@
-import { guidFor } from "@ember/object/internals";
-import { action } from "@ember/object";
-import { inject as service } from "@ember/service";
-import Component from "@glimmer/component";
+import { guidFor }           from '@ember/object/internals';
+import { action }            from '@ember/object';
+import { inject as service } from '@ember/service';
+import Component             from '@glimmer/component';
 
 export default class RightClickMenuComponent extends Component {
   @service rightClickMenu;
@@ -10,12 +10,12 @@ export default class RightClickMenuComponent extends Component {
 
   generateGetBoundingClientRect(x = 0, y = 0) {
     return () => ({
-      width: 0,
+      width:  0,
       height: 0,
-      top: y,
-      right: x,
+      top:    y,
+      right:  x,
       bottom: y,
-      left: x,
+      left:   x
     });
   }
 
@@ -32,20 +32,20 @@ export default class RightClickMenuComponent extends Component {
 
   @action
   addContextMenuListeners() {
-    window.addEventListener("click", this.closeContextMenu);
-    window.addEventListener("contextmenu", this.closeContextMenu);
+    window.addEventListener('click', this.closeContextMenu);
+    window.addEventListener('contextmenu', this.closeContextMenu);
     this.getTargetElement(this.popperId).addEventListener(
-      "contextmenu",
+      'contextmenu',
       this.contextMenu
     );
   }
 
   willDestroy() {
-    window.removeEventListener("click", this.closeContextMenu);
-    window.removeEventListener("contextmenu", this.closeContextMenu);
+    window.removeEventListener('click', this.closeContextMenu);
+    window.removeEventListener('contextmenu', this.closeContextMenu);
 
     if (this.targetElement) {
-      this.targetElement.removeEventListener("contextmenu", this.contextMenu);
+      this.targetElement.removeEventListener('contextmenu', this.contextMenu);
     }
 
     super.willDestroy(...arguments);
@@ -61,14 +61,14 @@ export default class RightClickMenuComponent extends Component {
     let virtualElement = {
       getBoundingClientRect: () => {
         return {
-          width: 0,
+          width:  0,
           height: 0,
-          top: y,
-          right: x + 10,
+          top:    y,
+          right:  x + 10,
           bottom: y,
-          left: x,
+          left:   x
         };
-      },
+      }
     };
 
     this.rightClickMenu.createPopper(
@@ -92,7 +92,7 @@ export default class RightClickMenuComponent extends Component {
       return;
     }
 
-    if (!e || e.type === "click" || !e.path.includes(this.targetElement)) {
+    if (!e || e.type === 'click' || !e.path.includes(this.targetElement)) {
       this.rightClickMenu.closePopper(this.targetElement);
     }
   }
