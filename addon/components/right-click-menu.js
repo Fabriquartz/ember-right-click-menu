@@ -45,10 +45,7 @@ export default class RightClickMenuComponent extends Component {
     window.removeEventListener('contextmenu', this.closeContextMenu);
 
     if (this.targetElement) {
-      this.targetElement.removeEventListener(
-        'contextmenu',
-        this.contextMenu
-      );
+      this.targetElement.removeEventListener('contextmenu', this.contextMenu);
     }
 
     super.willDestroy(...arguments);
@@ -74,11 +71,27 @@ export default class RightClickMenuComponent extends Component {
       }
     };
 
-    this.rightClickMenu.createPopper(popperElementId, this.targetElement, virtualElement);
+    this.rightClickMenu.createPopper(
+      popperElementId,
+      this.targetElement,
+      virtualElement
+    );
   }
 
   @action
   closeContextMenu(e) {
+    if (
+      e &&
+      !e.path.every((element) => {
+        return (
+          !element.className ||
+          !element.className.includes('ember-right-click-menu__item')
+        );
+      })
+    ) {
+      return;
+    }
+
     if (!e || e.type === 'click' || !e.path.includes(this.targetElement)) {
       this.rightClickMenu.closePopper(this.targetElement);
     }

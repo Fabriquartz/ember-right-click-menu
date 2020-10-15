@@ -29,6 +29,8 @@ export default class ListItem extends Component {
       this.args.item.action();
     }
 
-    this.args.closeContextMenu();
+    if (!this.args.item.items) {
+      this.args.closeContextMenu();
+    }
   }
 }
