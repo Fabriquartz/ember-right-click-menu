@@ -84,8 +84,8 @@ export default class RightClickMenuComponent extends Component {
       e &&
       !e.path.every((element) => {
         return (
-          !element.className ||
-          !element.className.includes('ember-right-click-menu__item')
+          !element.classList ||
+          !element.classList.contains('ember-right-click-menu__item')
         );
       })
     ) {
