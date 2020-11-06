@@ -61,6 +61,7 @@ module.exports = {
     'no-console':  ['error', { allow: ['error'] }],
     quotes:        ['error', 'single', { allowTemplateLiterals: true }],
     'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+    indent:        'off',
     // indent:        [
     //   'error',
     //   2,
