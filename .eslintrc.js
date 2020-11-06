@@ -61,20 +61,21 @@ module.exports = {
     'no-console':  ['error', { allow: ['error'] }],
     quotes:        ['error', 'single', { allowTemplateLiterals: true }],
     'brace-style': ['error', '1tbs', { allowSingleLine: true }],
-    indent:        [
-      'error',
-      2,
-      {
-        FunctionExpression:  { body: 1, parameters: 'first' },
-        FunctionDeclaration: { body: 1, parameters: 'first' },
-        CallExpression:      { arguments: 'off' },
-        MemberExpression:    'off',
-        ObjectExpression:    'off',
-        ImportDeclaration:   'first',
-        ArrayExpression:     'first',
-        ignoredNodes:        ['ConditionalExpression']
-      }
-    ],
+    indent:        'off',
+    // indent:        [
+    //   'error',
+    //   2,
+    //   {
+    //     FunctionExpression:  { body: 1, parameters: 'first' },
+    //     FunctionDeclaration: { body: 1, parameters: 'first' },
+    //     CallExpression:      { arguments: 'off' },
+    //     MemberExpression:    'off',
+    //     ObjectExpression:    'off',
+    //     ImportDeclaration:   'first',
+    //     ArrayExpression:     'first',
+    //     ignoredNodes:        ['ConditionalExpression']
+    //   }
+    // ],
     'key-spacing': [
       'error',
       {

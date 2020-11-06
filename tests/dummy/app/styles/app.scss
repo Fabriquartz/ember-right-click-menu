@@ -30,13 +30,23 @@ html, body {
     height: 100%;
 
     & > span {
+      justify-content: space-between;
       border: 1px solid #f5f5f5;
       margin: 0.3em;
       border-radius: 0.5em;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #f5f5f5;
+      padding: 1em;
+      color: #bdbdbd;
+
+      svg {
+        text {
+          fill: #bdbdbd;
+        }
+        rect {
+          fill: none;
+          stroke: #bdbdbd
+        }
+      }
 
       &:hover {
         background-color: #f5f5f5;

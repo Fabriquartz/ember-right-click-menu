@@ -82,6 +82,7 @@ export default class RightClickMenuComponent extends Component {
   closeContextMenu(e) {
     if (
       e &&
+      e.target.nodeName === 'LI' &&
       !e.path.every((element) => {
         return (
           !element.className ||
