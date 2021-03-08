@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.com/Fabriquartz/ember-right-click-menu.svg?branch=master)](https://travis-ci.com/Fabriquartz/ember-right-click-menu)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-right-click-menu.svg)](https://emberobserver.com/addons/ember-right-click-menu)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e2887ca15f89c3164e95/maintainability)](https://codeclimate.com/github/Fabriquartz/ember-right-click-menu/maintainability)
+
 Ember Right Click Menu
 ==============================================================================
 
