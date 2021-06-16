@@ -6,7 +6,11 @@
       class="ember-right-click-menu"
       @items={{@items}}
       @closeContextMenu={{this.closeContextMenu}}
+      @hasBlock={{has-block}}
       {{did-insert this.addContextMenuListeners}}
-    />
+      as |item|
+    >
+      {{yield item}}
+    </ItemList>
   </EmberWormhole>
 {{/if}}

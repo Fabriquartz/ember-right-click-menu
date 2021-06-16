@@ -4,17 +4,27 @@
   id={{this.popperId}}
   class="ember-right-click-menu__item
     {{if @item.class @item.class}}
-    {{if @item.disabled "ember-right-click-menu__item--disabled"}}"
+    {{if @item.divider "ember-right-click-menu__item--divider"}}
+    {{if @item.disabled "ember-right-click-menu__item--disabled"}}
+    {{if @hasAnySubItemList "ember-right-click-menu__item--chevron"}}"
   {{on "mouseover" this.mouseEnter}}
   {{on "click" this.triggerAction}}
 >
-  {{@item.title}}
+  {{#if @hasBlock}}
+    {{yield @item}}
+  {{else}}
+    {{@item.title}}
+  {{/if}}
   {{#if @item.items}}
     <ItemList
       id={{concat "popper-for-" this.popperId}}
       @items={{@item.items}}
       @closeContextMenu={{@closeContextMenu}}
-    />
+      @hasBlock={{@hasBlock}}
+      as |item|
+    >
+      {{yield item}}
+    </ItemList>
     <i class="material-icons">
       chevron_right
     </i>

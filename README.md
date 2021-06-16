@@ -76,6 +76,38 @@ items = [
 </span>
 ```
 
+
+
+The following attributes can be used to add your items:
+- action (function to trigger on click)
+- class (string to add classnames to the list item)
+- disabled (boolean to enable/disable a list item)
+- divider (boolean to add a visual divider after the list item it's on)
+- title (string to show in the list item)
+
+
+Customize
+------------------------------------------------------------------------------
+You can render your own template or component in the menu item by passing as shown in the example below. Add anything you like to your list of objects (as shown before) to be able to use it in your template.
+
+```hbs
+<span>
+  Element with context menu
+  <RightClickMenu @items={{this.items}} as |item|>
+    <div>
+      <PaperIcon @icon={{@item.iconName}}>
+      <label>
+        {{@item.title}}
+      </label>
+      <span class="subtitle">
+        {{@item.subtitle}}
+      </span>
+    </div>
+  </RightClickMenu>
+</span>
+```
+
+
 Contributing
 ------------------------------------------------------------------------------
 
