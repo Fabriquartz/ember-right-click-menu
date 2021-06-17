@@ -19,6 +19,7 @@ export default class RightClickMenuComponent extends Component {
     });
   }
 
+  @action
   getTargetElement(popperId) {
     let tetherElement = document.querySelector(`#tether-for-${popperId}`);
     let targetElement = tetherElement && tetherElement.parentElement;
@@ -40,6 +41,7 @@ export default class RightClickMenuComponent extends Component {
     );
   }
 
+  @action
   willDestroy() {
     window.removeEventListener('click', this.closeContextMenu);
     window.removeEventListener('contextmenu', this.closeContextMenu);

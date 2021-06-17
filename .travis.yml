@@ -11,8 +11,7 @@ addons:
   chrome: stable
 
 cache:
-  directories:
-    - $HOME/.npm
+  yarn: true
 
 env:
   global:
@@ -41,7 +40,7 @@ jobs:
     - stage: "Additional Tests"
       name: "Floating Dependencies"
       install:
-        - npm install --no-package-lock
+        - yarn install --no-lockfile --non-interactives
       script:
         - yarn test:ember
 
