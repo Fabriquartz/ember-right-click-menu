@@ -1,0 +1,146 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.0.1
+
+defaults: &defaults
+  docker:
+    - image: circleci/node:12-browsers
+      environment:
+        JOBS: 1
+
+jobs:
+  prepare:
+    <<: *defaults
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: "yarn"
+          cache-version: "v1"
+          include-branch-in-cache-key: false
+      - run:
+          name: Generate reports folder
+          command: mkdir reports
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  lint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Lint Handlebars
+          command: yarn lint:hbs
+      - run:
+          name: Lint JavaScript
+          command: yarn lint:js
+
+  test:
+    <<: *defaults
+    parameters:
+      scenario:
+        type: enum
+        enum:
+          [
+            "ember-lts-3.20",
+            "ember-lts-3.24",
+            "ember-release",
+            "ember-beta",
+            "ember-canary",
+            "ember-default",
+            "ember-default-with-jquery",
+            "ember-classic",
+            "embroider-safe",
+            "embroider-optimized"
+          ]
+        default: "ember-default"
+    steps:
+      - attach_workspace:
+          at: .
+      - when:
+          condition:
+            equal: [ "ember-default", << parameters.scenario >> ]
+          steps:
+            - run:
+                name: Run << parameters.scenario >> Tests
+                command: yarn test:ember
+      - when:
+          condition:
+            not:
+              equal: [ "default", << parameters.scenario >> ]
+          steps:
+            - run:
+                name: Run << parameters.scenario >> Tests
+                command: yarn ember try:one << parameters.scenario >> --skip-cleanup=true
+      - store_test_results:
+          path: "reports"
+      - store_artifacts:
+          path: "reports"
+
+workflows:
+  test_matrix:
+    jobs:
+      - prepare
+      - lint:
+          requires:
+            - prepare
+      - test:
+          requires:
+            - prepare
+      - test:
+          name: test_lts_3_20
+          scenario: ember-lts-3.20
+          requires:
+            - lint
+            - test
+      - test:
+          name: test_lts_3_24
+          scenario: ember-lts-3.24
+          requires:
+            - lint
+            - test
+      - test:
+          name: test_release
+          scenario: ember-release
+          requires:
+            - lint
+            - test
+      - test:
+          name: test_beta
+          scenario: ember-beta
+          requires:
+            - lint
+            - test
+      - test:
+          name: test_canary
+          scenario: ember-canary
+          requires:
+            - lint
+            - test
+      - test:
+          name: test_default_with_jquery
+          scenario: "ember-default-with-jquery"
+          requires:
+            - lint
+            - test
+      - test:
+          name: test_classic
+          scenario: ember-classic
+          requires:
+            - lint
+            - test
+      - test:
+          name: test_embroider_safe
+          scenario: "embroider-safe"
+          requires:
+            - lint
+            - test
+      - test:
+          name: test_embroider_optimized
+          scenario: "embroider-optimized"
+          requires:
+            - lint
+            - test

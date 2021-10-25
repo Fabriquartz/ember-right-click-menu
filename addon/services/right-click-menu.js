@@ -1,6 +1,6 @@
-import { A }   from '@ember/array';
+import { A } from '@ember/array';
 import Service from '@ember/service';
-import Popper  from '@popperjs/core';
+import Popper from '@popperjs/core';
 
 export default class RightClickMenuService extends Service {
   activeLists = A();
@@ -30,15 +30,17 @@ export default class RightClickMenuService extends Service {
         virtualElement || targetElement,
         popperElement,
         {
-          placement: virtualElement ? 'right-start' : options.placement || 'right',
+          placement: virtualElement
+            ? 'right-start'
+            : options.placement || 'right',
           modifiers: [
             {
-              name:    'offset',
+              name: 'offset',
               options: {
-                offset: virtualElement ? [0, 10] : options.offset || [0, 0]
-              }
-            }
-          ]
+                offset: virtualElement ? [0, 10] : options.offset || [0, 0],
+              },
+            },
+          ],
         }
       );
 
@@ -47,7 +49,7 @@ export default class RightClickMenuService extends Service {
       this.activeLists.pushObject({
         targetElement,
         popperElement,
-        popperInstance
+        popperInstance,
       });
     }
   }

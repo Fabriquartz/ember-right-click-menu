@@ -1,7 +1,7 @@
-import { guidFor }           from '@ember/object/internals';
-import { action }            from '@ember/object';
+import { guidFor } from '@ember/object/internals';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import Component             from '@glimmer/component';
+import Component from '@glimmer/component';
 
 export default class RightClickMenuComponent extends Component {
   @service rightClickMenu;
@@ -10,12 +10,12 @@ export default class RightClickMenuComponent extends Component {
 
   generateGetBoundingClientRect(x = 0, y = 0) {
     return () => ({
-      width:  0,
+      width: 0,
       height: 0,
-      top:    y,
-      right:  x,
+      top: y,
+      right: x,
       bottom: y,
-      left:   x
+      left: x,
     });
   }
 
@@ -63,14 +63,14 @@ export default class RightClickMenuComponent extends Component {
     let virtualElement = {
       getBoundingClientRect: () => {
         return {
-          width:  0,
+          width: 0,
           height: 0,
-          top:    y,
-          right:  x + 10,
+          top: y,
+          right: x + 10,
           bottom: y,
-          left:   x
+          left: x,
         };
-      }
+      },
     };
 
     this.rightClickMenu.createPopper(
