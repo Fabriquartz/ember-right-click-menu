@@ -1,9 +1,9 @@
 /* eslint-env node */
 'use strict';
 
-module.exports = function(deployTarget) {
+module.exports = function (deployTarget) {
   let ENV = {
-    build: {}
+    build: {},
     // include other plugin configuration that applies to all deploy targets here
   };
 
@@ -21,8 +21,8 @@ module.exports = function(deployTarget) {
     ENV.build.environment = 'production';
     // configure other plugins for production deploy target here
     ENV.git = {
-      branch:        'gh-pages',
-      commitMessage: 'Deployed %@'
+      branch: 'gh-pages',
+      commitMessage: 'Deployed %@',
     };
   }
 

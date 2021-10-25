@@ -1,10 +1,10 @@
-import { guidFor }                   from '@ember/object/internals';
-import { get, action }               from '@ember/object';
-import { inject as service }         from '@ember/service';
-import Component                     from '@glimmer/component';
+import { guidFor } from '@ember/object/internals';
+import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Component from '@glimmer/component';
 
 export default class ListItem extends Component {
-  @service rightClickMenu
+  @service rightClickMenu;
 
   popperId = guidFor(this);
 
@@ -16,7 +16,7 @@ export default class ListItem extends Component {
       return;
     }
 
-    this.rightClickMenu.createPopper(`popper-for-${get(this, 'popperId')}`);
+    this.rightClickMenu.createPopper(`popper-for-${this.popperId}`);
   }
 
   @action
