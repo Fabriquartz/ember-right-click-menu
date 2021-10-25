@@ -1,5 +1,5 @@
 import { guidFor } from '@ember/object/internals';
-import { get, action } from '@ember/object';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 
