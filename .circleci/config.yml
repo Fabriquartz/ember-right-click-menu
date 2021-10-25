@@ -53,8 +53,6 @@ jobs:
             "ember-default",
             "ember-default-with-jquery",
             "ember-classic",
-            "embroider-safe",
-            "embroider-optimized"
           ]
         default: "ember-default"
     steps:
@@ -70,7 +68,7 @@ jobs:
       - when:
           condition:
             not:
-              equal: [ "default", << parameters.scenario >> ]
+              equal: [ "ember-default", << parameters.scenario >> ]
           steps:
             - run:
                 name: Run << parameters.scenario >> Tests
@@ -129,18 +127,6 @@ workflows:
       - test:
           name: test_classic
           scenario: ember-classic
-          requires:
-            - lint
-            - test
-      - test:
-          name: test_embroider_safe
-          scenario: "embroider-safe"
-          requires:
-            - lint
-            - test
-      - test:
-          name: test_embroider_optimized
-          scenario: "embroider-optimized"
           requires:
             - lint
             - test
