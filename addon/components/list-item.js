@@ -20,13 +20,13 @@ export default class ListItem extends Component {
   }
 
   @action
-  triggerAction() {
+  triggerAction(e) {
     if (this.args.item.disabled) {
       return;
     }
 
     if (this.args.item.action) {
-      this.args.item.action();
+      this.args.item.action(e);
     }
 
     if (!this.args.item.items) {
