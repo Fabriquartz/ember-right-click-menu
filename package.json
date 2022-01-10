@@ -79,6 +79,9 @@
     "qunit-dom": "^1.6.0",
     "sass": "^1.25.0"
   },
+  "resolutions": {
+    "colors": "1.4.0"
+  },
   "engines": {
     "node": "12.* || 14.* || >= 16"
   },
