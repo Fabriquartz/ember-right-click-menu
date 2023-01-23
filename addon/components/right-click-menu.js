@@ -85,7 +85,7 @@ export default class RightClickMenuComponent extends Component {
     if (
       e &&
       e.target.nodeName === 'LI' &&
-      !e.path.every((element) => {
+      !e.composedPath().every((element) => {
         return (
           !element.className ||
           !element.className.includes('ember-right-click-menu__item')
@@ -95,7 +95,11 @@ export default class RightClickMenuComponent extends Component {
       return;
     }
 
-    if (!e || e.type === 'click' || !e.path.includes(this.targetElement)) {
+    if (
+      !e ||
+      e.type === 'click' ||
+      !e.composedPath().includes(this.targetElement)
+    ) {
       this.rightClickMenu.closePopper(this.targetElement);
     }
   }
