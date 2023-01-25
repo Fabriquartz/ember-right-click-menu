@@ -2,12 +2,14 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
+    requireConfigFile: false,
     sourceType: 'module',
-    ecmaFeatures: {
-      legacyDecorators: true,
+
+    babelOptions: {
+      configFile: require.resolve('./.babelrc'),
     },
   },
   plugins: ['ember'],
@@ -18,6 +20,7 @@ module.exports = {
   ],
   env: {
     browser: true,
+    es6: true,
   },
   overrides: [
     // node files
