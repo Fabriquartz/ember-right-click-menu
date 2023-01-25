@@ -50,11 +50,11 @@ module('Integration | Component | right-click-menu', function (hooks) {
     ul = document.querySelectorAll('ul[data-show]')[2];
     listItem = ul.querySelectorAll('.ember-right-click-menu__item')[2];
 
-    assert.equal(document.querySelectorAll('ul[data-show]').length, 3);
+    assert.strictEqual(document.querySelectorAll('ul[data-show]').length, 3);
 
     await click(listItem);
 
-    assert.equal(document.querySelectorAll('ul[data-show]').length, 0);
+    assert.strictEqual(document.querySelectorAll('ul[data-show]').length, 0);
 
     await clearRender();
   });
@@ -91,7 +91,7 @@ module('Integration | Component | right-click-menu', function (hooks) {
     ul = document.querySelectorAll('ul[data-show]')[1];
     listItem = ul.querySelectorAll('.ember-right-click-menu__item')[2];
 
-    assert.equal(listItem.textContent.trim(), 'Zelda');
+    assert.strictEqual(listItem.textContent.trim(), 'Zelda');
 
     await click(listItem);
     await clearRender();
@@ -119,13 +119,13 @@ module('Integration | Component | right-click-menu', function (hooks) {
     let [listItem] = ul.querySelectorAll('.ember-right-click-menu__item');
 
     ul = document.querySelectorAll('ul[data-show]');
-    assert.equal(ul.length, 1);
+    assert.strictEqual(ul.length, 1);
 
     await triggerEvent(listItem, 'mouseover');
     ul = document.querySelectorAll('ul[data-show]');
     [listItem] = ul[0].querySelectorAll('.ember-right-click-menu__item');
 
-    assert.equal(ul.length, 1);
+    assert.strictEqual(ul.length, 1);
 
     await clearRender();
   });
@@ -170,15 +170,15 @@ module('Integration | Component | right-click-menu', function (hooks) {
     ul = document.querySelectorAll('ul[data-show]')[2];
     listItem = ul.querySelectorAll('.ember-right-click-menu__item')[2];
 
-    assert.equal(document.querySelectorAll('ul[data-show]').length, 3);
+    assert.strictEqual(document.querySelectorAll('ul[data-show]').length, 3);
 
     await click(window);
 
-    assert.equal(document.querySelectorAll('ul[data-show]').length, 0);
+    assert.strictEqual(document.querySelectorAll('ul[data-show]').length, 0);
 
     await triggerEvent('#root-element', 'contextmenu');
 
-    assert.equal(document.querySelectorAll('ul[data-show]').length, 1);
+    assert.strictEqual(document.querySelectorAll('ul[data-show]').length, 1);
 
     await clearRender();
   });

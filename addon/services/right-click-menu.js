@@ -1,6 +1,6 @@
 import { A } from '@ember/array';
 import Service from '@ember/service';
-import Popper from '@popperjs/core';
+import { createPopper } from '@popperjs/core';
 
 export default class RightClickMenuService extends Service {
   activeLists = A();
@@ -26,7 +26,7 @@ export default class RightClickMenuService extends Service {
         );
       })
     ) {
-      let popperInstance = Popper.createPopper(
+      let popperInstance = createPopper(
         virtualElement || targetElement,
         popperElement,
         {
