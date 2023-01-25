@@ -4,7 +4,7 @@ module.exports = {
   root: true,
   parser: '@babel/eslint-parser',
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 2018,
     requireConfigFile: false,
     sourceType: 'module',
 
@@ -20,7 +20,6 @@ module.exports = {
   ],
   env: {
     browser: true,
-    es6: true,
   },
   overrides: [
     // node files
