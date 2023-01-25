@@ -24,7 +24,7 @@ module.exports = {
   rules: {
     'node/no-unpublished-require': [
       'error',
-      { allowModules: ['ember-source-channel-url'] },
+      { allowModules: ['ember-source-channel-url', '@embroider/test-setup'] },
     ],
   },
   overrides: [
