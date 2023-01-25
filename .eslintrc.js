@@ -21,6 +21,12 @@ module.exports = {
   env: {
     browser: true,
   },
+  rules: {
+    'node/no-unpublished-require': [
+      'error',
+      { allowModules: ['ember-source-channel-url'] },
+    ],
+  },
   overrides: [
     // node files
     {
