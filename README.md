@@ -18,7 +18,7 @@ This addon is made for Ember Octane, with glimmer components
 Installation
 ------------------------------------------------------------------------------
 
-```
+```sh
 ember install ember-right-click-menu
 ```
 
@@ -27,8 +27,8 @@ Setup
 The right click menu needs some styling, which must be included manually. Add one of the following imports to your application. If you don't want any custom styling and style the right click menu on your own, you can just import the default.
 
 ```css
-  @import 'ember-right-click-menu';
-  @import 'ember-right-click-menu-default'; /* without any additional styling */
+@import 'ember-right-click-menu';
+@import 'ember-right-click-menu-default'; /* without any additional styling */
 ```
 
 If you don't want to include material icons, you can add the following lines to your styling instead
@@ -81,11 +81,11 @@ items = [
 
 
 The following attributes can be used to add your items:
-- action (function to trigger on click)
-- class (string to add classnames to the list item)
-- disabled (boolean to enable/disable a list item)
-- divider (boolean to add a visual divider after the list item it's on)
-- title (string to show in the list item)
+- `action` (function to trigger on click)
+- `class` (string to add classnames to the list item)
+- `disabled` (boolean to enable/disable a list item)
+- `divider` (boolean to add a visual divider after the list item it's on)
+- `title` (string to show in the list item)
 
 
 Customize
